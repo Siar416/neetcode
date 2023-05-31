@@ -110,4 +110,34 @@ const twoSum = (nums, target) => {
     }
   }
 };
-console.log(twoSum([3, 3], 6));
+// console.log(twoSum([3, 3], 6));
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Group Anagrams
+
+// Given an array of strings strs, group the anagrams together.
+// You can return the answer in any order.
+
+// An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase,
+// typically using all the original letters exactly once.
+
+// Input: strs = ["eat","tea","tan","ate","nat","bat"]
+// Output: [["bat"],["nat","tan"],["ate","eat","tea"]]
+
+const groupAnagrams = (strs) => {
+  let map = {};
+
+  const sortedArray = strs.map((str) => str.split("").sort().join(""));
+
+  for (let i = 0; i < sortedArray.length; i++) {
+    if (!map[sortedArray[i]]) {
+      map[sortedArray[i]] = [strs[i]];
+    } else {
+      map[sortedArray[i]].push(strs[i]);
+    }
+  }
+
+  return Object.values(map);
+};
+console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
