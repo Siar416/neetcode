@@ -266,16 +266,57 @@ const isValidSudoku = (board) => {
 
   return true;
 };
-console.log(
-  isValidSudoku([
-    ["5", "3", ".", ".", "7", ".", ".", ".", "."],
-    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
-    [".", "9", "8", ".", ".", ".", ".", "6", "."],
-    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
-    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
-    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
-    [".", "6", ".", ".", ".", ".", "2", "8", "."],
-    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
-    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
-  ])
-);
+// console.log(
+//   isValidSudoku([
+//     ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+//     ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+//     [".", "9", "8", ".", ".", ".", ".", "6", "."],
+//     ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+//     ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+//     ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+//     [".", "6", ".", ".", ".", ".", "2", "8", "."],
+//     [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+//     [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+//   ])
+// );
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Longest Consecutive Sequence
+
+// Given an unsorted array of integers nums,
+// return the length of the longest consecutive elements sequence.
+
+// You must write an algorithm that runs in O(n) time.
+
+// Example 1:
+
+// Input: nums = [100,4,200,1,3,2]
+// Output: 4
+// Explanation: The longest consecutive elements
+// sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+// Example 2:
+// Input: nums = [0,3,7,2,5,8,4,6,0,1]
+// Output: 9
+
+const longestConsecutive = (nums) => {
+  let numMap = {};
+  let longest = 0;
+
+  for (const num of nums) {
+    numMap[num] = true;
+  }
+
+  for (const num of nums) {
+    if (!numMap[num - 1]) {
+      let length = 0;
+      while (numMap[num + length]) {
+        length++;
+      }
+      longest = Math.max(length, longest);
+    }
+  }
+  return longest;
+};
+console.log(longestConsecutive([100, 4, 200, 1, 3, 2]));
