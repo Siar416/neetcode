@@ -374,3 +374,34 @@ const threeSum = (nums) => {
   return result;
 };
 console.log(threeSum([-1, 0, 1, 2, -1, -4]));
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Challenge
+// Can you modify your previous Insertion Sort implementation to keep track of the number of shifts it makes while sorting?
+// The only thing you should print is the number of shifts made by the algorithm to completely sort the array.
+// A shift occurs when an element's position changes in the array. Do not shift an element if it is not necessary.
+
+// input
+// 2 1 3 1 2
+
+// output
+// 4
+
+function runningTime(arr) {
+  let shifts = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    let currentNum = arr[i];
+    let prevNum = i - 1;
+
+    while (prevNum >= 0 && arr[prevNum] > currentNum) {
+      arr[prevNum + 1] = arr[prevNum];
+      shifts++;
+      prevNum--;
+    }
+    arr[prevNum + 1] = currentNum;
+  }
+  return shifts;
+}
+console.log(runningTime([2, 1, 3, 1, 2]));
