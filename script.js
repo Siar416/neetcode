@@ -443,4 +443,58 @@ function gradingStudents(grades) {
   }
   return resultGrades;
 }
-console.log(gradingStudents([73, 67, 38, 33]));
+// console.log(gradingStudents([73, 67, 38, 33]));
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// HackerRank Apple and Oranges problem
+
+// Complete the countApplesAndOranges function in the editor below.
+// It should print the number of apples and oranges that land on Sam's house, each on a separate line.
+
+// countApplesAndOranges has the following parameter(s):
+
+// s: integer, starting point of Sam's house location.
+// t: integer, ending location of Sam's house location.
+// a: integer, location of the Apple tree.
+// b: integer, location of the Orange tree.
+// apples: integer array, distances at which each apple falls from the tree.
+// oranges: integer array, distances at which each orange falls from the tree.
+
+// Sample input:
+// 7 11
+// 5 15
+// 3 2
+// -2 2 1
+// 5 -6
+
+// Sample output
+// 1
+// 1
+
+// * The function accepts following parameters:
+// *  1. INTEGER s
+// *  2. INTEGER t
+// *  3. INTEGER a
+// *  4. INTEGER b
+// *  5. INTEGER_ARRAY apples
+// *  6. INTEGER_ARRAY oranges
+
+function countApplesAndOranges(s, t, a, b, apples, oranges) {
+  let appleResult = 0;
+  let orangeResult = 0;
+
+  for (let i = 0; i < apples.length; i++) {
+    if (a + apples[i] >= s && a + apples[i] <= t) {
+      appleResult++;
+    }
+  }
+
+  for (let i = 0; i < oranges.length; i++) {
+    if (b + oranges[i] >= s && b + oranges[i] <= t) {
+      orangeResult++;
+    }
+  }
+  console.log(`${appleResult}\n${orangeResult}`);
+}
+console.log(countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]));
