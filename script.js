@@ -497,4 +497,37 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
   }
   console.log(`${appleResult}\n${orangeResult}`);
 }
-console.log(countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]));
+// console.log(countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6]));
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Function Description
+
+// Complete the function kangaroo in the editor below.
+
+// kangaroo has the following parameter(s):
+
+// int x1, int v1: starting position and jump distance for kangaroo 1
+// int x2, int v2: starting position and jump distance for kangaroo 2
+// Returns
+
+// string: either YES or NO
+
+// Input Format
+
+// A single line of four space-separated integers denoting the respective values of x1, v1, x2, and v2.
+
+function kangaroo(x1, v1, x2, v2) {
+  if (x1 === x2) return "YES";
+
+  if (x1 !== x2 && v1 === v2) return "NO";
+
+  const time = (x2 - x1) / (v1 - v2);
+
+  if (time >= 0 && Number.isInteger(time)) {
+    return "YES";
+  } else {
+    return "NO";
+  }
+}
+console.log(kangaroo(0, 2, 5, 3));
